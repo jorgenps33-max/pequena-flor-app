@@ -1,0 +1,57 @@
+PEQUENA FLOR APP COMPLETO COM BANCO DE DADOS REAL
+
+Esta versão inclui:
+- Login real com e-mail e senha
+- Senhas protegidas com PBKDF2
+- Banco de dados Cloudflare D1
+- Painel da divulgadora
+- Painel do dono
+- Cadastro de divulgadoras
+- Cadastro de produtos
+- Registro de vendas reais
+- Cálculo automático de comissão
+- Solicitação de saque
+- Notificação no navegador quando aparece venda nova no painel da divulgadora
+- Compartilhamento do catálogo pelo WhatsApp
+
+IMPORTANTE:
+Notificação automática pelo WhatsApp direto exige API oficial do WhatsApp Business/Meta ou serviço pago aprovado.
+Esta versão usa notificação real no navegador quando a divulgadora está com o app aberto ou instalado.
+
+COMO PUBLICAR NO CLOUDFLARE WORKERS + D1
+
+1. Abra o Cloudflare.
+2. Vá em Workers & Pages.
+3. Crie um Worker novo.
+4. Crie um banco D1 chamado: pequena-flor-db.
+5. Copie o database_id gerado pelo Cloudflare.
+6. Abra o arquivo wrangler.toml e troque:
+   database_id = "COLE_AQUI_O_DATABASE_ID"
+
+7. Instale pelo terminal, caso use computador:
+   npm install -g wrangler
+   wrangler login
+   wrangler d1 execute pequena-flor-db --file=./schema.sql
+   wrangler deploy
+
+8. Caso vá colar manualmente no painel do Cloudflare:
+   - Copie o conteúdo de src/worker.js
+   - Cole no Worker
+   - Configure o binding D1 com o nome DB
+   - Crie a variável JWT_SECRET
+   - Salve e faça Deploy
+
+PRIMEIRO ACESSO:
+1. Abra o app.
+2. Clique em "Instalar banco inicial".
+3. Entre com:
+   E-mail: admin@pequenaflor.app
+   Senha: admin123
+
+DIVULGADORA DE TESTE:
+E-mail: flor01@pequenaflor.app
+Senha: 123456
+Código: FLOR01
+
+RECOMENDAÇÃO:
+Depois do primeiro acesso, troque as senhas padrão.

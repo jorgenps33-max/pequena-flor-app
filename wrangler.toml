@@ -1,0 +1,11 @@
+name = "pequena-flor-app"
+main = "src/worker.js"
+compatibility_date = "2026-06-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pequena-flor-db"
+database_id = "COLE_AQUI_O_DATABASE_ID"
+
+[vars]
+JWT_SECRET = "troque-este-segredo-por-uma-frase-grande"
